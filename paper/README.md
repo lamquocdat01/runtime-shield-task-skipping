@@ -1,6 +1,6 @@
 # paper/ — snapshot for the submitted manuscript
 
-What the manuscript prints, frozen at tag `v1.3.2-submission`:
+What the manuscript prints, frozen at tag `v1.3.3-submission`:
 
 | File | What |
 |---|---|

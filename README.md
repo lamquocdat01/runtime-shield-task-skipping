@@ -53,7 +53,7 @@ Every script takes `--seed` (default 42).
 
 ## Data policy
 
-The corpus has 3,170 events because the LASIESTA frames are taken in capture order. `code/p0_crosscheck_deep3.py` compares the re-implementation with a re-run of the released Deep3 harness after correcting a sequence-ordering error in its LASIESTA corpus listing; these corrected per-event tables differ from those printed in the Deep3 article, and a correction to that article is in preparation.
+The corpus has 3,170 events because the LASIESTA frames are taken in capture order. `code/p0_crosscheck_deep3.py` compares the re-implementation with a re-run of the released Deep3 harness after correcting a sequence-ordering error in its LASIESTA corpus listing; these corrected per-event tables differ from those printed in the Deep3 article.
 
 No frames, ground truth or detection dumps are redistributed: the licences of CDnet2014, LASIESTA and BMC 2012 do not record permission to redistribute derived data. `DATA.md` lists the derived inputs with SHA-256 and the scripts that regenerate them from the public datasets.
 

@@ -3,7 +3,7 @@ against the per-event outcomes of a re-run of the released Deep3 harness after
 correcting a sequence-ordering error in its LASIESTA corpus listing (frames in
 capture order; re-run 27-09-2026; events_gated.csv = deployed `>`,
 events_gated_fixed.csv = `>=`). These corrected tables differ from the tables
-printed in the Deep3 article; a correction to that article is in preparation.
+printed in the Deep3 article.
 Read-only on the Deep3 side; nothing is imported from it.
 
 Usage: python code/p0_crosscheck_deep3.py --seed 42 --deep3-dir <dir with events_gated*.csv>
