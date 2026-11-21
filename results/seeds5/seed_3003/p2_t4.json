@@ -1,0 +1,661 @@
+{
+ "seed": 3003,
+ "B": 1000,
+ "hashes": {
+  "v1.0": "f2d33ae2ddab5c5dc4ab764a87f703b2219498bbbcc900cd6dbf3af71cced940",
+  "PREREG_06_v1.1.md": "32d5d6ac11621294805bd3e74a97f4ebf6ae75d44ba6ca7bcaa699ffc47b34ad",
+  "code/mutants_v11.py": "791c34973518cf71f17e9e82ecde0c9b3a7186a3843f21744b7eba003ef72bc8"
+ },
+ "n_mutants_union": 87,
+ "n_mutants_v11": 51,
+ "n_cb_python_vs_numba_mismatch_frames": 0,
+ "equiv_union": {
+  "n_eq_orig": 20,
+  "n_eq_orig_cb": 3,
+  "classes": {
+   "M1a": [
+    "M1a",
+    "M1b",
+    "N05",
+    "N09",
+    "N14",
+    "N27",
+    "N41"
+   ],
+   "M2b": [
+    "M2b",
+    "M2f"
+   ],
+   "M2c": [
+    "M2c",
+    "N15",
+    "N20"
+   ],
+   "M3f": [
+    "M3f",
+    "N29"
+   ],
+   "M4a": [
+    "M4a",
+    "M4e",
+    "N30"
+   ],
+   "M4c": [
+    "M4c",
+    "M4f",
+    "M5c",
+    "N23"
+   ],
+   "M5a": [
+    "M5a",
+    "M5b"
+   ],
+   "M5f": [
+    "M5f",
+    "N10"
+   ],
+   "N03": [
+    "N03",
+    "N04",
+    "N17"
+   ]
+  },
+  "eq_orig": [
+   "M1c",
+   "M1e",
+   "M1f",
+   "M2d",
+   "M3a",
+   "M3b",
+   "M3c",
+   "M3d",
+   "M3e",
+   "M5e",
+   "N01",
+   "N02",
+   "N07",
+   "N19",
+   "N33",
+   "N34",
+   "N35",
+   "N36",
+   "N37",
+   "N38",
+   "C07",
+   "C09",
+   "C10"
+  ]
+ },
+ "by_class": [
+  {
+   "family": "CB",
+   "class": "cb",
+   "n": 10,
+   "eq_orig": 3,
+   "kept": 7,
+   "mc_viol_kept": 5
+  },
+  {
+   "family": "G1",
+   "class": "M1_boundary",
+   "n": 6,
+   "eq_orig": 3,
+   "kept": 2,
+   "mc_viol_kept": 1
+  },
+  {
+   "family": "G1",
+   "class": "M2_counter_reset",
+   "n": 6,
+   "eq_orig": 1,
+   "kept": 4,
+   "mc_viol_kept": 0
+  },
+  {
+   "family": "G1",
+   "class": "M3_init",
+   "n": 6,
+   "eq_orig": 5,
+   "kept": 1,
+   "mc_viol_kept": 0
+  },
+  {
+   "family": "G1",
+   "class": "M4_refresh_phase",
+   "n": 6,
+   "eq_orig": 0,
+   "kept": 4,
+   "mc_viol_kept": 0
+  },
+  {
+   "family": "G1",
+   "class": "M5_clock_unit",
+   "n": 6,
+   "eq_orig": 1,
+   "kept": 3,
+   "mc_viol_kept": 2
+  },
+  {
+   "family": "G1",
+   "class": "M6_hysteresis_watchdog",
+   "n": 6,
+   "eq_orig": 0,
+   "kept": 6,
+   "mc_viol_kept": 0
+  },
+  {
+   "family": "G1",
+   "class": "cap",
+   "n": 17,
+   "eq_orig": 4,
+   "kept": 7,
+   "mc_viol_kept": 3
+  },
+  {
+   "family": "G1",
+   "class": "clock",
+   "n": 6,
+   "eq_orig": 0,
+   "kept": 5,
+   "mc_viol_kept": 1
+  },
+  {
+   "family": "G1",
+   "class": "counter",
+   "n": 7,
+   "eq_orig": 0,
+   "kept": 3,
+   "mc_viol_kept": 3
+  },
+  {
+   "family": "G1",
+   "class": "missing",
+   "n": 6,
+   "eq_orig": 6,
+   "kept": 0,
+   "mc_viol_kept": 0
+  },
+  {
+   "family": "G1",
+   "class": "phase",
+   "n": 5,
+   "eq_orig": 0,
+   "kept": 3,
+   "mc_viol_kept": 1
+  }
+ ],
+ "v1.0_on_v1.0_set": {
+  "label": "v1.0 set (reproduction of p1_t4.json)",
+  "n_mutants": 36,
+  "n_eff": 20,
+  "n_eff_by_family": {
+   "G1": 20
+  },
+  "n_v": 3,
+  "violating_kept": [
+   "M1a",
+   "M5a",
+   "M5d"
+  ],
+  "H4prime": {
+   "k_FI_delta_tau": 3,
+   "n_v": 3,
+   "fraction": 1.0,
+   "k_FI_half": 0,
+   "k_FI_double": 3,
+   "k_FI_onesided": 3,
+   "boot_fraction_mean": 0.715,
+   "boot_fraction_ci95": [
+    0.0,
+    1.0
+   ],
+   "PASS": true
+  },
+  "H5": {
+   "mutant": "M1a",
+   "frontier_dist": 0.08291850827679084,
+   "boot_share_le_delta": 0.718,
+   "PASS": true
+  },
+  "H6a": {
+   "mc_catches_all_corpus_violating": true,
+   "n_corpus_violating_kept": 3,
+   "mc_max_seconds": 0.04,
+   "mc_max_seconds_by_family": {
+    "G1": 0.04
+   },
+   "n_mc_violating_not_seen_on_corpus": 0,
+   "n_mc_state_cap": 0,
+   "PASS": true
+  },
+  "H6b": {
+   "monitor_max_delay_frames": 5,
+   "R": 5,
+   "PASS": true
+  },
+  "H6c": {
+   "videos": [
+    "CDnet2014/tramstop",
+    "LASIESTA/O_SU_02",
+    "CDnet2014/fall",
+    "CDnet2014/turbulence1",
+    "CDnet2014/twoPositionPTZCam",
+    "CDnet2014/parking",
+    "LASIESTA/I_CA_01",
+    "BMC/221",
+    "LASIESTA/I_SM_11",
+    "CDnet2014/continuousPan",
+    "CDnet2014/PETS2006",
+    "LASIESTA/O_SM_10",
+    "BMC/512",
+    "CDnet2014/fountain02",
+    "LASIESTA/I_MC_01",
+    "BMC/212",
+    "CDnet2014/turnpike_0_5fps",
+    "BMC/511",
+    "BMC/311",
+    "LASIESTA/I_SM_07"
+   ],
+   "caught_oracleA": 0,
+   "n_v": 3,
+   "rate_oracleA": 0.0,
+   "caught_oracleB": 3,
+   "rate_oracleB": 1.0,
+   "PASS": true
+  },
+  "mean_rate_1000_subsets_oracleA": {
+   "M1a": 0.286,
+   "M5a": 0.402,
+   "M5d": 0.298
+  },
+  "mean_rate_1000_subsets_oracleB": {
+   "M1a": 0.994,
+   "M5a": 0.995,
+   "M5d": 0.992
+  },
+  "per_mutant_boot_dist_ci95": {
+   "M1a": [
+    0.024324601868864367,
+    0.15984691487975575
+   ],
+   "M5a": [
+    0.02458781424080338,
+    0.16078154772394718
+   ],
+   "M5d": [
+    0.02253444569584562,
+    0.16357192156100145
+   ]
+  },
+  "per_mutant_dist": {
+   "M1a": 0.08291850827679084,
+   "M5a": 0.08606357893353035,
+   "M5d": 0.07998570681843785
+  }
+ },
+ "v1.0_reproduces_p1_t4": true,
+ "v1.0_rules_on_union": {
+  "label": "union v1.0 + v1.1 (v1.0 rules)",
+  "n_mutants": 87,
+  "n_eff": 45,
+  "n_eff_by_family": {
+   "G1": 38,
+   "CB": 7
+  },
+  "n_v": 16,
+  "violating_kept": [
+   "M1a",
+   "M5a",
+   "M5d",
+   "N03",
+   "N06",
+   "N08",
+   "N13",
+   "N16",
+   "N18",
+   "N21",
+   "N32",
+   "C01",
+   "C02",
+   "C03",
+   "C05",
+   "C06"
+  ],
+  "H4prime": {
+   "k_FI_delta_tau": 11,
+   "n_v": 16,
+   "fraction": 0.6875,
+   "k_FI_half": 0,
+   "k_FI_double": 14,
+   "k_FI_onesided": 13,
+   "boot_fraction_mean": 0.441,
+   "boot_fraction_ci95": [
+    0.0,
+    0.8125
+   ],
+   "PASS": true
+  },
+  "H5": {
+   "mutant": "M1a",
+   "frontier_dist": 0.08291850827679084,
+   "boot_share_le_delta": 0.718,
+   "PASS": true
+  },
+  "H6a": {
+   "mc_catches_all_corpus_violating": true,
+   "n_corpus_violating_kept": 15,
+   "mc_max_seconds": 0.7513,
+   "mc_max_seconds_by_family": {
+    "CB": 0.7513,
+    "G1": 0.0846
+   },
+   "n_mc_violating_not_seen_on_corpus": 1,
+   "n_mc_state_cap": 0,
+   "PASS": true
+  },
+  "H6b": {
+   "monitor_max_delay_frames": 5,
+   "R": 5,
+   "PASS": true
+  },
+  "H6c": {
+   "videos": [
+    "CDnet2014/tramstop",
+    "LASIESTA/O_SU_02",
+    "CDnet2014/fall",
+    "CDnet2014/turbulence1",
+    "CDnet2014/twoPositionPTZCam",
+    "CDnet2014/parking",
+    "LASIESTA/I_CA_01",
+    "BMC/221",
+    "LASIESTA/I_SM_11",
+    "CDnet2014/continuousPan",
+    "CDnet2014/PETS2006",
+    "LASIESTA/O_SM_10",
+    "BMC/512",
+    "CDnet2014/fountain02",
+    "LASIESTA/I_MC_01",
+    "BMC/212",
+    "CDnet2014/turnpike_0_5fps",
+    "BMC/511",
+    "BMC/311",
+    "LASIESTA/I_SM_07"
+   ],
+   "caught_oracleA": 0,
+   "n_v": 16,
+   "rate_oracleA": 0.0,
+   "caught_oracleB": 9,
+   "rate_oracleB": 0.5625,
+   "PASS": true
+  },
+  "mean_rate_1000_subsets_oracleA": {
+   "M1a": 0.286,
+   "M5a": 0.402,
+   "M5d": 0.298,
+   "N03": 0.402,
+   "N06": 0.402,
+   "N08": 0.0,
+   "N13": 0.402,
+   "N16": 0.0,
+   "N18": 0.144,
+   "N21": 0.16,
+   "N32": 0.0,
+   "C01": 0.0,
+   "C02": 0.808,
+   "C03": 0.0,
+   "C05": 0.0,
+   "C06": 0.0
+  },
+  "mean_rate_1000_subsets_oracleB": {
+   "M1a": 0.994,
+   "M5a": 0.995,
+   "M5d": 0.992,
+   "N03": 0.997,
+   "N06": 0.994,
+   "N08": 0.0,
+   "N13": 0.994,
+   "N16": 0.456,
+   "N18": 0.116,
+   "N21": 0.0,
+   "N32": 0.0,
+   "C01": 0.0,
+   "C02": 0.998,
+   "C03": 0.0,
+   "C05": 1.0,
+   "C06": 1.0
+  },
+  "per_mutant_boot_dist_ci95": {
+   "M1a": [
+    0.024324601868864367,
+    0.15984691487975575
+   ],
+   "M5a": [
+    0.02458781424080338,
+    0.16078154772394718
+   ],
+   "M5d": [
+    0.02253444569584562,
+    0.16357192156100145
+   ],
+   "N03": [
+    0.019734859190406698,
+    0.1550317338079851
+   ],
+   "N06": [
+    0.02319198120875428,
+    0.16076848926457615
+   ],
+   "N08": [
+    0.0634126695996289,
+    0.19481840295569397
+   ],
+   "N13": [
+    0.020797647403756024,
+    0.15866710326051844
+   ],
+   "N16": [
+    0.03227571461923999,
+    0.17184143827332532
+   ],
+   "N18": [
+    0.06289762208074066,
+    0.19034510951825148
+   ],
+   "N21": [
+    0.04898743533186862,
+    0.19022015181577326
+   ],
+   "N32": [
+    0.05393971241865937,
+    0.18552084143698222
+   ],
+   "C01": [
+    0.08026884318815043,
+    0.2384590755680675
+   ],
+   "C02": [
+    0.09587630312182634,
+    0.4475682254741816
+   ],
+   "C03": [
+    0.08196562840016985,
+    0.23910204091159185
+   ],
+   "C05": [
+    0.20059008875669282,
+    1.8532931606718819
+   ],
+   "C06": [
+    0.21269161940754136,
+    1.957950391183099
+   ]
+  },
+  "per_mutant_dist": {
+   "M1a": 0.08291850827679084,
+   "M5a": 0.08606357893353035,
+   "M5d": 0.07998570681843785,
+   "N03": 0.0806458442953067,
+   "N06": 0.08481094025340652,
+   "N08": 0.10729045365164282,
+   "N13": 0.0817652375033018,
+   "N16": 0.077030650965776,
+   "N18": 0.10741104827813765,
+   "N21": 0.09667882882343057,
+   "N32": 0.09944733560457868,
+   "C01": 0.12078517833310937,
+   "C02": 0.22697376018469922,
+   "C03": 0.12239576890358356,
+   "C05": 0.7496449308006038,
+   "C06": 0.7915272099996686
+  }
+ },
+ "v1.1": {
+  "delta_boot": {
+   "G1": 0.1752914449535351,
+   "CB": 0.21976673579114117
+  },
+  "delta_tau": {
+   "G1": {
+    "value": 0.10618520110571916,
+    "n_pairs": 2340
+   },
+   "CB": {
+    "value": 0.1310212612561818,
+    "n_pairs": 2340
+   }
+  },
+  "deployed_correct_point_dist": {
+   "G1": 0.0999923411565376,
+   "CB": 0.12082980823747767
+  },
+  "deployed_correct_boot_dist_median": {
+   "G1": 0.11360338615952803,
+   "CB": 0.14709064183036247
+  },
+  "H4dprime": {
+   "k_FI_delta_boot": 13,
+   "n_v": 16,
+   "fraction": 0.8125,
+   "by_family": {
+    "sum": {
+     "CB": 2,
+     "G1": 11
+    },
+    "count": {
+     "CB": 5,
+     "G1": 11
+    }
+   },
+   "boot_fraction_mean": 0.8171875,
+   "boot_fraction_ci95": [
+    0.5,
+    0.9375
+   ],
+   "PASS": true
+  },
+  "H5dprime": {
+   "mutant": "M1a",
+   "frontier_dist": 0.08291850827679084,
+   "delta_boot_G1": 0.1752914449535351,
+   "boot_share_le_delta_boot": 0.994,
+   "PASS": true
+  },
+  "H6cprime": {
+   "mean_rate_oracleA": {
+    "M1a": 0.286,
+    "M5a": 0.402,
+    "M5d": 0.298,
+    "N03": 0.402,
+    "N06": 0.402,
+    "N08": 0.0,
+    "N13": 0.402,
+    "N16": 0.0,
+    "N18": 0.144,
+    "N21": 0.16,
+    "N32": 0.0,
+    "C01": 0.0,
+    "C02": 0.808,
+    "C03": 0.0,
+    "C05": 0.0,
+    "C06": 0.0
+   },
+   "max_rate": 0.808,
+   "argmax": "C02",
+   "PASS": false
+  },
+  "H7": {
+   "k_FI_half_tau": 0,
+   "n_v": 16,
+   "fraction": 0.0,
+   "PASS": false
+  }
+ },
+ "exploratory_b1_R6": {
+  "n_G1": 77,
+  "n_violating": 23,
+  "violating": [
+   "M1a",
+   "M1b",
+   "M5a",
+   "M5b",
+   "M5d",
+   "N01",
+   "N03",
+   "N04",
+   "N05",
+   "N06",
+   "N08",
+   "N09",
+   "N13",
+   "N14",
+   "N16",
+   "N17",
+   "N18",
+   "N21",
+   "N27",
+   "N32",
+   "N33",
+   "N37",
+   "N41"
+  ],
+  "orig_violates": false
+ },
+ "baselines": {
+  "G1": {
+   "a": 0.7990743686557936,
+   "E": 238.47896559796868,
+   "miss_all": 0.08138801261829653,
+   "miss_DgeR": 0.0,
+   "n_miss_DgeR": 0.0,
+   "mAP_proxy": 99.45012342553326,
+   "viol": 0.0
+  },
+  "CB": {
+   "a": 0.822131113098704,
+   "E": 244.48294185090256,
+   "miss_all": 0.07034700315457414,
+   "miss_DgeR": 0.0,
+   "n_miss_DgeR": 0.0,
+   "mAP_proxy": 99.51658332805874,
+   "viol": 0.0
+  }
+ },
+ "deployed_correct": {
+  "G1": {
+   "a": 0.7990743686557936,
+   "E": 238.47896559796868,
+   "miss_all": 0.08138801261829653
+  },
+  "CB": {
+   "a": 0.822131113098704,
+   "E": 244.48294185090256,
+   "miss_all": 0.07034700315457414
+  }
+ },
+ "wall_s": {
+  "grid": 9.0,
+  "traces": 36.8,
+  "mc": 59.9,
+  "total": 101.5
+ }
+}

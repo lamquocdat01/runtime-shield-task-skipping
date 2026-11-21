@@ -2,7 +2,7 @@
 
 Reference: `paper/numbers.json` (the numbers printed in the manuscript) · regenerated: `results/numbers.json` of a fresh copy of this repository in a new Python 3.11 virtual environment (`pip install -r requirements.txt`), Windows 11 + WSL2 Ubuntu 24.04, seed 42, 21 November 2026.
 
-- stable keys in reference: **1314**, of which compared: **1313**; identical (rel. tol. 1e-9): **1313**; different: **0**; missing in the rerun: **0**; new keys: 40
+- stable keys in reference: **2181**, of which compared: **2180**; identical (rel. tol. 1e-9): **2180**; different: **0**; missing in the rerun: **0**; new keys: 40
 - volatile (timing) keys, not compared: 145
 - stable keys compared as volatile (sole exception, see below): 1
 
@@ -12,6 +12,7 @@ Reference: `paper/numbers.json` (the numbers printed in the manuscript) · regen
 | cb_exact.json | 243 | 243 | 0 |
 | cb_exact_KP_rule.json | 3 | 3 | 0 |
 | cb_rule_ext.json | 127 | 127 | 0 |
+| fi_baserate.json | 57 | 57 | 0 |
 | frontier_correct_info.json | 24 | 24 | 0 |
 | gate_shield_verify.log | 14 | 14 | 0 |
 | imitator_cb_final.json | 36 | 36 | 0 |
@@ -21,6 +22,8 @@ Reference: `paper/numbers.json` (the numbers printed in the manuscript) · regen
 | p1_t4.json | 53 | 53 | 0 |
 | p2_shield.json | 22 | 22 | 0 |
 | p2_t4.json | 284 | 284 | 0 |
+| seeds5_summary.json | 802 | 802 | 0 |
+| shield_size.json | 8 | 8 | 0 |
 
 ## Sole exception: exit code of a run without result
 
@@ -33,11 +36,9 @@ The six IMITATOR breaker runs of the template encoding (`CB_k1-1_ge/gt`, `CB_d_p
 
 ## How the reproduction was run
 
-The steps of `code/reproduce.py --tools` were run with seed 42. A first attempt stopped at `p2_t4.py` because a local edit had changed the frozen `code/mutants_v11.py`. The file was restored byte-identical (SHA-256 checked by `p2_t4.py`), and the remaining steps were run one by one with the same arguments. Then the full IMITATOR grid and the check:
-
 ```
-python code/reproduce.py --seed 42 --tools --check paper/numbers.json
-python code/region_imitator.py --seed 42 --only base,d_pipe,d_block,b,d_b_pipe,d_b_block,kappa,d_kappa_b_block
+python code/reproduce.py --seed 42 --tools --seeds5 --check paper/numbers.json
+python code/region_imitator.py --seed 42
 python code/make_numbers.py --check paper/numbers.json
 ```
 

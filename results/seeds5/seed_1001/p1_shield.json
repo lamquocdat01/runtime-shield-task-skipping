@@ -1,0 +1,122 @@
+{
+ "seed": 1001,
+ "a_exhaustive": {
+  "n_max": 12,
+  "R": [
+   2,
+   3,
+   4
+  ],
+  "n_traces": 24570,
+  "n_addition_sets": 2391480,
+  "n_traces_where_some_enforcer_beats_lazy": 0,
+  "n_lazy_infeasible": 0,
+  "n_lazy_ne_nu": 0,
+  "examples": [],
+  "wall_s": 1.5
+ },
+ "b_closed_loop_counterexample": {
+  "R": 3,
+  "k": 3,
+  "n_frames": 600,
+  "lazy_total_open": 400,
+  "lazy_added": 100,
+  "early_total_open": 300,
+  "early_added": 300,
+  "lazy_beaten_in_total_open": true
+ },
+ "c_corpus": {
+  "n_videos": 121,
+  "n_frames": 166589,
+  "R": 5,
+  "B": 1000,
+  "seed": 1001,
+  "definition": "extra activation = (OPEN after enforcer - OPEN of deployed '>' trace) / frames, frame-weighted over videos",
+  "enforcers": {
+   "lazy": {
+    "extra_activation": 0.031611,
+    "ci95": [
+     0.023837,
+     0.038826
+    ],
+    "residual_IR_violations": 0,
+    "diff_vs_lazy": 0.0,
+    "diff_vs_lazy_ci95": [
+     0.0,
+     0.0
+    ],
+    "n_videos_where_fewer_opens_than_lazy": 0
+   },
+   "eager": {
+    "extra_activation": 0.03918,
+    "ci95": [
+     0.02952,
+     0.048602
+    ],
+    "residual_IR_violations": 0,
+    "diff_vs_lazy": 0.00757,
+    "diff_vs_lazy_ci95": [
+     0.005627,
+     0.009385
+    ],
+    "n_videos_where_fewer_opens_than_lazy": 0
+   },
+   "random": {
+    "extra_activation": 0.048743,
+    "ci95": [
+     0.037064,
+     0.059429
+    ],
+    "residual_IR_violations": 0,
+    "diff_vs_lazy": 0.017132,
+    "diff_vs_lazy_ci95": [
+     0.012664,
+     0.021199
+    ],
+    "n_videos_where_fewer_opens_than_lazy": 0
+   },
+   "periodic": {
+    "extra_activation": 0.032373,
+    "ci95": [
+     0.024698,
+     0.040351
+    ],
+    "residual_IR_violations": 0,
+    "diff_vs_lazy": 0.000762,
+    "diff_vs_lazy_ci95": [
+     0.000465,
+     0.001212
+    ],
+    "n_videos_where_fewer_opens_than_lazy": 0
+   },
+   "lazy_closed_loop": {
+    "extra_activation": 0.029636,
+    "ci95": [
+     0.021972,
+     0.036939
+    ],
+    "residual_IR_violations": 0,
+    "diff_vs_lazy": -0.001975,
+    "diff_vs_lazy_ci95": [
+     -0.002385,
+     -0.001595
+    ],
+    "n_videos_where_fewer_opens_than_lazy": 80
+   },
+   "fixed_ge": {
+    "extra_activation": 0.029636,
+    "ci95": [
+     0.022424,
+     0.037134
+    ],
+    "residual_IR_violations": 0,
+    "diff_vs_lazy": -0.001975,
+    "diff_vs_lazy_ci95": [
+     -0.002345,
+     -0.001592
+    ],
+    "n_videos_where_fewer_opens_than_lazy": 80
+   }
+  }
+ }
+}

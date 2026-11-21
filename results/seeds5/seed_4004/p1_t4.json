@@ -1,0 +1,151 @@
+{
+ "seed": 4004,
+ "B": 1000,
+ "prereg_sha256": "f2d33ae2ddab5c5dc4ab764a87f703b2219498bbbcc900cd6dbf3af71cced940",
+ "delta": 0.1062,
+ "n_mutants": 36,
+ "n_equiv_to_orig": 10,
+ "n_eff": 20,
+ "equivalence_classes": {
+  "M1a": [
+   "M1a",
+   "M1b"
+  ],
+  "M2b": [
+   "M2b",
+   "M2f"
+  ],
+  "M4a": [
+   "M4a",
+   "M4e"
+  ],
+  "M4c": [
+   "M4c",
+   "M4f",
+   "M5c"
+  ],
+  "M5a": [
+   "M5a",
+   "M5b"
+  ]
+ },
+ "equiv_to_orig": [
+  "M1c",
+  "M1e",
+  "M1f",
+  "M2d",
+  "M3a",
+  "M3b",
+  "M3c",
+  "M3d",
+  "M3e",
+  "M5e"
+ ],
+ "n_v_mc": 3,
+ "violating_kept": [
+  "M1a",
+  "M5a",
+  "M5d"
+ ],
+ "n_corpus_violating_kept": 3,
+ "H4prime": {
+  "k_FI_delta": 3,
+  "n_v": 3,
+  "fraction": 1.0,
+  "k_FI_half": 0,
+  "k_FI_double": 3,
+  "k_FI_onesided": 3,
+  "boot_fraction_ci95": [
+   0.0,
+   1.0
+  ],
+  "boot_fraction_mean": 0.7033333333333333,
+  "PASS": true
+ },
+ "H5": {
+  "mutant": "M1a",
+  "frontier_dist": 0.08291850827679084,
+  "dominated_by_frontier": true,
+  "boot_share_le_delta": 0.704,
+  "PASS": true
+ },
+ "per_mutant_boot_dist_ci95": {
+  "M1a": [
+   0.027479188357876178,
+   0.1665169522025138
+  ],
+  "M5a": [
+   0.026393473820338693,
+   0.16990745560780207
+  ],
+  "M5d": [
+   0.022132835824837157,
+   0.17189151140940592
+  ]
+ },
+ "H6a": {
+  "mc_catches_all_corpus_violating": true,
+  "mc_max_seconds": 0.0215,
+  "mc_max_seconds_violating": 0.0003,
+  "n_mc_violating_not_seen_on_corpus": 0,
+  "PASS": true
+ },
+ "H6b": {
+  "monitor_max_delay_frames": 5,
+  "R": 5,
+  "PASS": true
+ },
+ "H6c": {
+  "videos": [
+   "LASIESTA/O_RA_01",
+   "LASIESTA/O_SU_02",
+   "LASIESTA/O_SM_03",
+   "LASIESTA/I_MC_02",
+   "BMC/112",
+   "LASIESTA/I_MB_01",
+   "LASIESTA/I_CA_01",
+   "LASIESTA/I_BS_02",
+   "BMC/322",
+   "CDnet2014/wetSnow",
+   "LASIESTA/I_IL_02",
+   "CDnet2014/winterDriveway",
+   "LASIESTA/I_OC_01",
+   "BMC/412",
+   "CDnet2014/skating",
+   "LASIESTA/O_SM_12",
+   "LASIESTA/O_SM_05",
+   "CDnet2014/tramCrossroad_1fps",
+   "BMC/512",
+   "LASIESTA/O_SN_01"
+  ],
+  "caught_oracleA": 0,
+  "n_v": 3,
+  "rate_oracleA": 0.0,
+  "caught_oracleB": 3,
+  "rate_oracleB": 1.0,
+  "mean_rate_1000_subsets_oracleA": {
+   "M1a": 0.325,
+   "M5a": 0.43,
+   "M5d": 0.311
+  },
+  "mean_rate_1000_subsets_oracleB": {
+   "M1a": 0.994,
+   "M5a": 0.996,
+   "M5d": 0.992
+  },
+  "PASS": true
+ },
+ "baseline_fixed": {
+  "a": 0.7990743686557936,
+  "E": 238.47896559796868,
+  "miss_all": 0.08138801261829653,
+  "miss_DgeR": 0.0,
+  "n_miss_DgeR": 0.0,
+  "mAP_proxy": 99.45012342553326,
+  "viol": 0.0
+ },
+ "wall_s": {
+  "grid": 2.0,
+  "total": 14.2
+ }
+}

@@ -1,0 +1,151 @@
+{
+ "seed": 1001,
+ "B": 1000,
+ "prereg_sha256": "f2d33ae2ddab5c5dc4ab764a87f703b2219498bbbcc900cd6dbf3af71cced940",
+ "delta": 0.1062,
+ "n_mutants": 36,
+ "n_equiv_to_orig": 10,
+ "n_eff": 20,
+ "equivalence_classes": {
+  "M1a": [
+   "M1a",
+   "M1b"
+  ],
+  "M2b": [
+   "M2b",
+   "M2f"
+  ],
+  "M4a": [
+   "M4a",
+   "M4e"
+  ],
+  "M4c": [
+   "M4c",
+   "M4f",
+   "M5c"
+  ],
+  "M5a": [
+   "M5a",
+   "M5b"
+  ]
+ },
+ "equiv_to_orig": [
+  "M1c",
+  "M1e",
+  "M1f",
+  "M2d",
+  "M3a",
+  "M3b",
+  "M3c",
+  "M3d",
+  "M3e",
+  "M5e"
+ ],
+ "n_v_mc": 3,
+ "violating_kept": [
+  "M1a",
+  "M5a",
+  "M5d"
+ ],
+ "n_corpus_violating_kept": 3,
+ "H4prime": {
+  "k_FI_delta": 3,
+  "n_v": 3,
+  "fraction": 1.0,
+  "k_FI_half": 0,
+  "k_FI_double": 3,
+  "k_FI_onesided": 3,
+  "boot_fraction_ci95": [
+   0.0,
+   1.0
+  ],
+  "boot_fraction_mean": 0.7073333333333333,
+  "PASS": true
+ },
+ "H5": {
+  "mutant": "M1a",
+  "frontier_dist": 0.08291850827679084,
+  "dominated_by_frontier": true,
+  "boot_share_le_delta": 0.702,
+  "PASS": true
+ },
+ "per_mutant_boot_dist_ci95": {
+  "M1a": [
+   0.02591119897496921,
+   0.159573509010255
+  ],
+  "M5a": [
+   0.025471234010454893,
+   0.16581776985135946
+  ],
+  "M5d": [
+   0.024173622973113595,
+   0.16009262547504696
+  ]
+ },
+ "H6a": {
+  "mc_catches_all_corpus_violating": true,
+  "mc_max_seconds": 0.0244,
+  "mc_max_seconds_violating": 0.0003,
+  "n_mc_violating_not_seen_on_corpus": 0,
+  "PASS": true
+ },
+ "H6b": {
+  "monitor_max_delay_frames": 5,
+  "R": 5,
+  "PASS": true
+ },
+ "H6c": {
+  "videos": [
+   "LASIESTA/I_MC_02",
+   "CDnet2014/sofa",
+   "LASIESTA/I_SM_06",
+   "CDnet2014/pedestrians",
+   "CDnet2014/skating",
+   "BMC/522",
+   "LASIESTA/O_SM_12",
+   "BMC/411",
+   "BMC/521",
+   "BMC/311",
+   "CDnet2014/zoomInZoomOut",
+   "CDnet2014/turbulence0",
+   "BMC/112",
+   "CDnet2014/PETS2006",
+   "CDnet2014/backdoor",
+   "LASIESTA/I_SM_07",
+   "LASIESTA/I_MB_02",
+   "BMC/322",
+   "LASIESTA/I_SI_01",
+   "CDnet2014/abandonedBox"
+  ],
+  "caught_oracleA": 3,
+  "n_v": 3,
+  "rate_oracleA": 1.0,
+  "caught_oracleB": 3,
+  "rate_oracleB": 1.0,
+  "mean_rate_1000_subsets_oracleA": {
+   "M1a": 0.286,
+   "M5a": 0.406,
+   "M5d": 0.304
+  },
+  "mean_rate_1000_subsets_oracleB": {
+   "M1a": 0.993,
+   "M5a": 0.997,
+   "M5d": 0.992
+  },
+  "PASS": false
+ },
+ "baseline_fixed": {
+  "a": 0.7990743686557936,
+  "E": 238.47896559796868,
+  "miss_all": 0.08138801261829653,
+  "miss_DgeR": 0.0,
+  "n_miss_DgeR": 0.0,
+  "mAP_proxy": 99.45012342553326,
+  "viol": 0.0
+ },
+ "wall_s": {
+  "grid": 2.3,
+  "total": 15.0
+ }
+}

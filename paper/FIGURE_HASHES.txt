@@ -1,7 +1,7 @@
 # C8b figure provenance: SHA-256 of each included figure and of the result files it is drawn from
 # generator: code/paper_figs.py --seed 42
-0a4458a9df9a3d4685c2b171cce38004beb9d0a2f5eb6195495a85417913ea56  figures/fig_cb.pdf
-48d28dc60df863006fee8d80b39f965a86a59b5bdc4a2f1fbb3cdec3c73705bb  figures/fig_frontier.pdf
+386245fb89d746d44dc64baff093bf43867245afafb0aa3033a8c8addde1719d  figures/fig_cb.pdf
+b76afde435628e3d676411159e04d00c0a4a5e34800d7cba180e7a0c61a727c9  figures/fig_frontier.pdf
 0bb6d68fa6561cc0b2d7c297d0b73efdb0280530183ed535e23501779fdb9f57  figures/fig_region.pdf
 d6065c603d17939eef237e02c3911f5d4a5c6fdafe0f35caf3c9c26977acfbea  figures/supp/CB_hole.png  (= results/region_ext/CB_hole.png: same)
 5dceb8207d2caa1a57adc2cf07094f493b84bc901d36c62f5faa2b2de2100aa1  figures/supp/d_b_interaction.png  (= results/region_ext/d_b_interaction.png: same)

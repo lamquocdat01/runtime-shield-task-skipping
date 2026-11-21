@@ -1,0 +1,151 @@
+{
+ "seed": 42,
+ "B": 1000,
+ "prereg_sha256": "f2d33ae2ddab5c5dc4ab764a87f703b2219498bbbcc900cd6dbf3af71cced940",
+ "delta": 0.1062,
+ "n_mutants": 36,
+ "n_equiv_to_orig": 10,
+ "n_eff": 20,
+ "equivalence_classes": {
+  "M1a": [
+   "M1a",
+   "M1b"
+  ],
+  "M2b": [
+   "M2b",
+   "M2f"
+  ],
+  "M4a": [
+   "M4a",
+   "M4e"
+  ],
+  "M4c": [
+   "M4c",
+   "M4f",
+   "M5c"
+  ],
+  "M5a": [
+   "M5a",
+   "M5b"
+  ]
+ },
+ "equiv_to_orig": [
+  "M1c",
+  "M1e",
+  "M1f",
+  "M2d",
+  "M3a",
+  "M3b",
+  "M3c",
+  "M3d",
+  "M3e",
+  "M5e"
+ ],
+ "n_v_mc": 3,
+ "violating_kept": [
+  "M1a",
+  "M5a",
+  "M5d"
+ ],
+ "n_corpus_violating_kept": 3,
+ "H4prime": {
+  "k_FI_delta": 3,
+  "n_v": 3,
+  "fraction": 1.0,
+  "k_FI_half": 0,
+  "k_FI_double": 3,
+  "k_FI_onesided": 3,
+  "boot_fraction_ci95": [
+   0.0,
+   1.0
+  ],
+  "boot_fraction_mean": 0.71,
+  "PASS": true
+ },
+ "H5": {
+  "mutant": "M1a",
+  "frontier_dist": 0.08291850827679084,
+  "dominated_by_frontier": true,
+  "boot_share_le_delta": 0.707,
+  "PASS": true
+ },
+ "per_mutant_boot_dist_ci95": {
+  "M1a": [
+   0.025487124995219292,
+   0.15965142498812426
+  ],
+  "M5a": [
+   0.024140284920201434,
+   0.16087645135332482
+  ],
+  "M5d": [
+   0.023046790847628573,
+   0.1621922571271106
+  ]
+ },
+ "H6a": {
+  "mc_catches_all_corpus_violating": true,
+  "mc_max_seconds": 0.023,
+  "mc_max_seconds_violating": 0.0003,
+  "n_mc_violating_not_seen_on_corpus": 0,
+  "PASS": true
+ },
+ "H6b": {
+  "monitor_max_delay_frames": 5,
+  "R": 5,
+  "PASS": true
+ },
+ "H6c": {
+  "videos": [
+   "LASIESTA/I_MB_01",
+   "LASIESTA/O_SM_11",
+   "CDnet2014/backdoor",
+   "LASIESTA/O_SM_06",
+   "LASIESTA/O_CL_02",
+   "LASIESTA/I_SM_01",
+   "BMC/422",
+   "BMC/312",
+   "CDnet2014/twoPositionPTZCam",
+   "CDnet2014/tramStation",
+   "CDnet2014/office",
+   "LASIESTA/O_SM_03",
+   "CDnet2014/snowFall",
+   "LASIESTA/I_SM_05",
+   "BMC/321",
+   "LASIESTA/I_OC_01",
+   "LASIESTA/O_SM_12",
+   "CDnet2014/overpass",
+   "LASIESTA/I_CA_02",
+   "CDnet2014/traffic"
+  ],
+  "caught_oracleA": 2,
+  "n_v": 3,
+  "rate_oracleA": 0.6666666666666666,
+  "caught_oracleB": 3,
+  "rate_oracleB": 1.0,
+  "mean_rate_1000_subsets_oracleA": {
+   "M1a": 0.318,
+   "M5a": 0.427,
+   "M5d": 0.308
+  },
+  "mean_rate_1000_subsets_oracleB": {
+   "M1a": 0.997,
+   "M5a": 0.999,
+   "M5d": 0.996
+  },
+  "PASS": false
+ },
+ "baseline_fixed": {
+  "a": 0.7990743686557936,
+  "E": 238.47896559796868,
+  "miss_all": 0.08138801261829653,
+  "miss_DgeR": 0.0,
+  "n_miss_DgeR": 0.0,
+  "mAP_proxy": 99.45012342553326,
+  "viol": 0.0
+ },
+ "wall_s": {
+  "grid": 2.3,
+  "total": 14.7
+ }
+}

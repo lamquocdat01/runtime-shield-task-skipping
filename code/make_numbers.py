@@ -23,6 +23,7 @@ SOURCES = [
     "results/region_ext/imitator_summary.json", "results/region_ext/cb_exact.json",
     "results/region_ext/cb_exact_KP_rule.json", "results/region_ext/cb_rule_ext.json",
     "results/region_ext/imitator_cb_final.json", "results/p2_t4.json", "results/p2_shield.json",
+    "results/fi_baserate.json", "results/shield_size.json", "results/seeds5_summary.json",
 ]
 VOLATILE = re.compile(r"(wall|seconds|time_s|_secs|_ms\b|ns_per_frame|U_k2|elapsed|rss|ratio_shield_to_detector)", re.I)
 # Sole exception to the stable comparison (stays in "stable" in numbers.json, but --check treats it like a

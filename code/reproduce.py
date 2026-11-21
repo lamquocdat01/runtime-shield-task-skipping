@@ -32,6 +32,8 @@ def main() -> None:
     ap.add_argument("--tools", action="store_true", help="also run the WSL tool steps")
     ap.add_argument("--skip-region", action="store_true",
                     help="skip the 642,600-point region grid (~5 min, 4 processes)")
+    ap.add_argument("--seeds5", action="store_true",
+                    help="also repeat the stochastic steps with five seeds (~20 min, code/seeds5.py)")
     ap.add_argument("--check", default="")
     a = ap.parse_args()
     s = ["--seed", str(a.seed)]
@@ -39,7 +41,10 @@ def main() -> None:
              ["code/conformance.py", *s], ["code/p1_t4.py", *s]]
     if not a.skip_region:
         steps.append(["code/region_bruteforce.py", *s])
-    steps += [["code/cb_exact_run.py", *s], ["code/cb_rule_ext.py", *s], ["code/p2_t4.py", *s]]
+    steps += [["code/cb_exact_run.py", *s], ["code/cb_rule_ext.py", *s], ["code/p2_t4.py", *s],
+              ["code/fi_baserate.py", *s]]
+    if a.seeds5:
+        steps.append(["code/seeds5.py", "--run"])
     if a.tools:
         steps += [["code/imitator_cb_final.py", *s], ["code/shield_bridge.py", *s]]
     env = dict(os.environ, MSYS_NO_PATHCONV="1")
@@ -51,6 +56,9 @@ def main() -> None:
         subprocess.run(["wsl.exe", "-d", "Ubuntu-24.04", "-u", "root", "--", "bash", sh],
                        check=True, env=env, capture_output=True)
         times["monitor/build_shield.sh"] = round(time.time() - t0, 1)
+        sz = sh.replace("build_shield.sh", "size_shield.sh")
+        subprocess.run(["wsl.exe", "-d", "Ubuntu-24.04", "--", "bash", sz], check=True, env=env,
+                       capture_output=True)
     for st in steps:
         times[st[0]] = round(run(st, env), 1)
     chk = ["code/make_numbers.py"] + (["--check", a.check] if a.check else [])

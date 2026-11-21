@@ -93,7 +93,7 @@ def fig_cb(out: Path) -> None:
         for K in range(2, 13):
             for P in range(1, K):
                 if np.gcd(K, P) % d == 0:
-                    ax.text(K, P, "·", ha="center", va="center", color=INK, fontsize=9)
+                    ax.plot(K, P, "o", ms=3.2, color=INK, mec="white", mew=0.4)
         ax.set_title(f"blocking detector $d={d}$", loc="left", color=INK)
         ax.set_xlabel("probe period $K$")
         ax.set_xlim(1.5, 12.5)
@@ -114,7 +114,7 @@ def fig_frontier(out: Path) -> None:
     m = pd.read_csv(RES / "mutants_v11.csv")
     m = m[(m.family == "G1") & m.kept_union]
     fig, ax = plt.subplots(figsize=(5.2, 3.2), constrained_layout=True)
-    ax.scatter(f.E, 100 * f.miss_all, s=3, color=GRID, lw=0, label="correct configurations", zorder=1)
+    ax.scatter(f.E, 100 * f.miss_all, s=4, color="#9e9d98", lw=0, label="correct configurations", zorder=1)
     p = f[f.is_pareto].sort_values("E")
     ax.plot(p.E, 100 * p.miss_all, lw=2, color=C1, label="Pareto frontier of correct configs",
             zorder=2)
@@ -129,13 +129,13 @@ def fig_frontier(out: Path) -> None:
     ax.scatter([dp["fixed_ge"]["E"]], [100 * dp["fixed_ge"]["miss_all"]], s=40, marker="s",
                color=C1, edgecolor="white", lw=0.8, zorder=5, label="fixed controller (15, 4)")
     ship = m[m.mutant == "M1a"].iloc[0]
-    ax.annotate("shipped bug", (ship.E, 100 * ship.miss_all), xytext=(ship.E - 9, 100 * ship.miss_all + 1.6),
+    ax.annotate("shipped fault", (ship.E, 100 * ship.miss_all), xytext=(ship.E - 9, 100 * ship.miss_all + 1.6),
                 fontsize=7, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
     lo, hi = 222, 248
     ax.set_xlim(lo, hi)
     sel = f[(f.E > lo) & (f.E < hi)]
     ax.set_ylim(100 * sel.miss_all.min() - 0.6, 100 * max(sel.miss_all.max(), bad.miss_all.max()) + 0.8)
-    ax.set_xlabel("energy $E$ (mJ/frame, Deep3 linear model)")
+    ax.set_xlabel("energy $E$ (mJ/frame, linear energy model)")
     ax.set_ylabel("event miss rate (%)")
     ax.grid(color=GRID, lw=0.4)
     ax.set_axisbelow(True)

@@ -5,3 +5,6 @@ __pycache__/
 .venv/
 results/*
 !results/numbers.json
+!results/seeds5_summary.json
+!results/seeds5/
+!results/shield_size.json
