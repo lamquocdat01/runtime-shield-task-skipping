@@ -1,0 +1,15 @@
+# C8b figure provenance: SHA-256 of each included figure and of the result files it is drawn from
+# generator: code/paper_figs.py --seed 42
+0a4458a9df9a3d4685c2b171cce38004beb9d0a2f5eb6195495a85417913ea56  figures/fig_cb.pdf
+48d28dc60df863006fee8d80b39f965a86a59b5bdc4a2f1fbb3cdec3c73705bb  figures/fig_frontier.pdf
+0bb6d68fa6561cc0b2d7c297d0b73efdb0280530183ed535e23501779fdb9f57  figures/fig_region.pdf
+d6065c603d17939eef237e02c3911f5d4a5c6fdafe0f35caf3c9c26977acfbea  figures/supp/CB_hole.png  (= results/region_ext/CB_hole.png: same)
+5dceb8207d2caa1a57adc2cf07094f493b84bc901d36c62f5faa2b2de2100aa1  figures/supp/d_b_interaction.png  (= results/region_ext/d_b_interaction.png: same)
+ce969a7aec9bc0147dca94e02fa39e1b872977708a9f3384f25f78e854a40c1c  figures/supp/d_block_TW.png  (= results/region_ext/d_block_TW.png: same)
+4a4e1b9dc8de73579b30dfd28396959a9e68bff351c77d3225c7356e569d45a1  figures/supp/kappa_T.png  (= results/region_ext/kappa_T.png: same)
+09c1fe111f5a4dad297618010798129c388fa9e1d060fe7489d177e49353e8f6  figures/supp/ship_shift.png  (= results/region_ext/ship_shift.png: same)
+68af5021aea762baaee5040c4d9a3f95980853f0e2a2a27a1bdc62ef8e9cf6e1  results/region_ext/bruteforce_grid.parquet  (input)
+536bc74304294a89036e319b6fcc05ce54fd307d26e91ade98025d938e0a5ecf  results/region_ext/cb_rule_ext.parquet  (input)
+db6d7ccea2f5ac2b5d925c218159d9ab0553d968e9c18ff32f033c08deed0518  results/frontier_correct.parquet  (input)
+26c1387ba146b54289640448ec445783dff198428025d32514cb7aab22b59fcd  results/mutants_v11.csv  (input)
+2ba60817c3fc65ff9fb79a7263c0483d6197c70511ebfc4b088da2f52e9e4f18  results/frontier_correct_info.json  (input)

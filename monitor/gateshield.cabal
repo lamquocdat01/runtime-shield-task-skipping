@@ -1,0 +1,10 @@
+cabal-version: 2.4
+name:          gateshield
+version:       0.2
+build-type:    Simple
+
+executable gate-shield
+  main-is:          GateShield.hs
+  build-depends:    base, copilot == 4.8.1, copilot-c99 == 4.8.1, copilot-theorem == 4.8.1,
+                    copilot-verifier == 4.8.1
+  default-language: Haskell2010

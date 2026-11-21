@@ -1,0 +1,96 @@
+(************************************************************
+ * gate_ext.imi -- topic 06, P1 Viec 1 (item 4). TEMPLATE.
+ * Extends model/toy_refresh_param.imi (P0) with four factors, each switchable:
+ *   d   detector delay (parameter d); latency counted to the RESULT, so the certificate
+ *       needs a dispatch in every window of R - d frames.        tag (*@D*)
+ *       mode BLOCK: one synchronous worker, the d - 1 frames after a dispatch cannot be
+ *       dispatched (busy; a refresh due there is lost).          tag (*@BLOCK*)
+ *   kappa = P/Q  refresh-clock units per frame: frames every P ticks, refresh due every
+ *       T*Q ticks of an absolute wall clock with adversarial phase; a refresh due in
+ *       (frame t-1, frame t] fires at frame t, and is LOST if frame t cannot be dispatched.
+ *   b   frame-drop budget (parameter b): a dropped frame is never dispatched, fsl += 1.
+ *       Budget counted per non-dispatch run (exact for the bad-run question, Lemma 2.1
+ *       of theory/THEORY_06.md).                                  tag (*@B*)
+ *   CB  ASMAG persistent-motion circuit breaker in series: location byp = BYPASS (detector
+ *       on every dispatchable frame, gate controller not stepped: with CB the counter is
+ *       the discrete fsl, simply not updated in BYPASS; a stopwatch encoding did not
+ *       terminate). Switching ACTIVE <-> BYPASS is free (abstraction of the
+ *       W_cb = 300 window and 30/300 probe, see THEORY_06.md sec. 2.5); switching only at
+ *       frame boundaries (xf = 0), i.e. per frame as in circuit_breaker.step.  tag (*@CB*)
+ * Comparison: CAPOFF = 0 for '>=' (fixed: cap when fsl >= W), 1 for '>' (deployed).
+ * One frame = P time units; decisions at frame boundaries (xf = P).
+ *   xs : time since the last dispatch   (frames since last dispatch = xs / P at a boundary)
+ *   xc : the gate controller's counter fsl, as a clock: fsl_t = xc/P - 1 at a boundary;
+ *        equal to xs unless CB froze it.
+ *   xr : refresh wall clock, due at xr = T*Q.
+ * bad <=> a run of R - d non-dispatch frames <=> xs >= (R - d + 1) P at a boundary.
+ * code/region_imitator.py instantiates the template: a line ending in (*@T1*@T2*) is kept
+ * iff all tags are enabled (NOBLOCK = BLOCK disabled); an inline fragment [[TAG: text]] is
+ * kept iff TAG is enabled; @P@, @Q@, @CAPOFF@, @DD@ (= d or 0), @TMAX@, @WMAX@, @RMAX@,
+ * @DMAX@, @BMAX@ are substituted, and the linear terms @TQ@ = Q T, @BAD@ = P (R - d + 1),
+ * @CAPLIM@ = P (W + CAPOFF), @CAPSAT@ = P (W + CAPOFF + 1), @XCMAX@ = P (W + CAPOFF + 2),
+ * @XSMAX@ = P (R + 1) (clock bound; independent of d so that R < d is reported bad),
+ * @DP@ = P d are written out in IMITATOR's linear syntax. BLOCK requires D.
+ ************************************************************)
+
+var
+  xf, xs, xc, xr : clock;
+  used, pend : rational;
+  fsl : rational; (*@CB*)
+  T, W, R : parameter;
+  d : parameter; (*@D*)
+  b : parameter; (*@B*)
+
+automaton ctrl
+  actions: ;
+
+  (* ---------------- ACTIVE: the gate controller G1 decides ---------------- *)
+  loc act: invariant xf <= @P@ & xr <= @TQ@ & xs <= @XSMAX@ [[NOCB: & xc <= @XCMAX@]]
+    (* wall-clock refresh instant: mark pending *)
+    when xr = @TQ@ do {xr := 0, pend := 1} goto act;
+    (* certificate violated: R - d frames without a dispatch *)
+    when xf = @P@ & xr < @TQ@ & xs >= @BAD@ goto bad;
+    (* dispatch (gate / refresh / cap; the adversarial gate may always open) *)
+    when xf = @P@ & xr < @TQ@ [[BLOCK: & xs >= @DP@]] do {xf := 0, xs := 0, [[NOCB: xc := 0,]] [[CB: fsl := 0,]] used := 0, pend := 0} goto act;
+    (* CLOSED, dispatchable frame: no refresh pending, cap not due (fsl cmp W false) *)
+    when xf = @P@ & xr < @TQ@ & pend = 0 [[NOCB: & xc <= @CAPLIM@]] [[CB: & fsl <= W + @CAPOFF@ - 1]] [[BLOCK: & xs >= @DP@]] do {xf := 0 [[CB: , fsl := fsl + 1]]} goto act;
+    (* CLOSED, detector busy (refresh due here is lost) *)
+    when xf = @P@ & xr < @TQ@ & xs < @DP@ do {xf := 0, pend := 0 [[CB: , fsl := fsl + 1]]} goto act; (*@BLOCK*)
+    (* CLOSED, dropped frame (refresh due here is lost) *)
+    when xf = @P@ & xr < @TQ@ & used <= b - 1 do {xf := 0, pend := 0, used := used + 1 [[CB: , fsl := fsl + 1]]} goto act; (*@B*)
+    (* fsl saturation (semantically inert: the cap stays due) keeps xc bounded *)
+    when xc >= @CAPSAT@ do {xc := @CAPSAT@} goto act; (*@NOCB*)
+    (* circuit breaker enters BYPASS *)
+    when xf = 0 goto byp; (*@CB*)
+
+  (* ---------------- BYPASS: detector on every dispatchable frame ---------------- *)
+  loc byp: invariant xf <= @P@ & xr <= @TQ@ & xs <= @XSMAX@ (*@CB*)
+    when xr = @TQ@ do {xr := 0, pend := 1} goto byp; (*@CB*)
+    when xf = @P@ & xr < @TQ@ & xs >= @BAD@ goto bad; (*@CB*)
+    when xf = @P@ & xr < @TQ@ & xs >= @DP@ do {xf := 0, xs := 0, used := 0, pend := 0} goto byp; (*@CB*@BLOCK*)
+    when xf = @P@ & xr < @TQ@ do {xf := 0, xs := 0, used := 0, pend := 0} goto byp; (*@CB*@NOBLOCK*)
+    when xf = @P@ & xr < @TQ@ & xs < @DP@ do {xf := 0, pend := 0} goto byp; (*@CB*@BLOCK*)
+    when xf = @P@ & xr < @TQ@ & used <= b - 1 do {xf := 0, pend := 0, used := used + 1} goto byp; (*@CB*@B*)
+    (* probe start / exit: G1 resumes with its frozen counter *)
+    when xf = 0 goto act; (*@CB*)
+
+  loc bad: invariant True
+end
+
+init := {
+  discrete =
+    loc[ctrl] := act,
+    used := 0,
+    fsl := 0, (*@CB*)
+    pend := 0
+  ;
+  continuous =
+    (* frame 0 is a dispatch (fsl_0 = W + 1 forces the cap); adversarial refresh phase *)
+       xf = 0 & xs = 0 & xc = 0 & xr >= 0 & xr < @TQ@
+    & T >= 1 & T <= @TMAX@
+    & W >= 0 & W <= @WMAX@
+    & R >= 1 & R <= @RMAX@
+    & d >= 0 & d <= @DMAX@ (*@D*)
+    & b >= 0 & b <= @BMAX@ (*@B*)
+  ;
+}

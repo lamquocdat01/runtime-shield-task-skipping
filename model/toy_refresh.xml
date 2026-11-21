@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+<declaration>// toy_refresh.xml -- topic 06, P0 toy model (spec/FSM_06.md section 1).
+// One frame = one time unit (clock x). Per frame the controller decides OPEN/CLOSED:
+//   OPEN  iff  gate (adversarial, nondeterministic) or refresh (t&gt;0, t mod T == 0)
+//              or reuse cap (fsl &gt; W  [deployed, GE=false] | fsl &gt;= W  [fixed, GE=true])
+// gap = number of consecutive CLOSED frames.  R-refresh  &lt;=&gt;  A[] gap &lt;= R-1.
+// Two independent instances: Cgt (as deployed, '&gt;') and Cge (fixed, '&gt;=').
+const int T = 15;      // T_refresh
+const int W = 4;       // W_maxskip
+const int R = (T &lt; W + 1) ? T : W + 1;   // claimed refresh bound = 5
+const int CAP = 64;    // counter saturation bound (never reached: fsl &lt;= T)
+</declaration>
+<template>
+<name x="5" y="5">Ctrl</name>
+<parameter>const bool GE</parameter>
+<declaration>clock x;              // time inside the current frame
+int[0,T] ph = 0;      // t mod T (refresh phase locked to video start)
+bool first = true;    // t == 0
+int[0,CAP] fsl = W + 1;   // frames_since_last_open (init forces OPEN at t = 0)
+int[0,CAP] gap = 0;   // consecutive CLOSED frames
+bool o = false;       // decision of the last frame
+
+void step(int g) {
+    bool rf = !first &amp;&amp; ph == 0;
+    bool cap = GE ? (fsl &gt;= W) : (fsl &gt; W);
+    o = (g == 1) || rf || cap;
+    if (o) { fsl = 0; gap = 0; }
+    else   { fsl = (fsl &lt; CAP) ? fsl + 1 : CAP; gap = (gap &lt; CAP) ? gap + 1 : CAP; }
+    ph = (ph + 1) % T;
+    first = false;
+}
+</declaration>
+<location id="id0" x="0" y="0">
+<name x="-20" y="-34">Frame</name>
+<label kind="invariant" x="-20" y="17">x &lt;= 1</label>
+</location>
+<init ref="id0"/>
+<transition>
+<source ref="id0"/>
+<target ref="id0"/>
+<label kind="select" x="60" y="-60">g : int[0,1]</label>
+<label kind="guard" x="60" y="-42">x == 1</label>
+<label kind="assignment" x="60" y="-24">step(g), x = 0</label>
+<nail x="60" y="-30"/>
+<nail x="60" y="30"/>
+</transition>
+</template>
+<system>Cgt = Ctrl(false);
+Cge = Ctrl(true);
+system Cgt, Cge;
+</system>
+<queries>
+<query>
+<formula>A[] Cgt.gap &lt;= R - 1</formula>
+<comment>Deployed '&gt;' cap: expected NOT satisfied (counterexample: gate silent, 5 consecutive CLOSED frames).</comment>
+</query>
+<query>
+<formula>A[] Cge.gap &lt;= R - 1</formula>
+<comment>Fixed '&gt;=' cap: expected satisfied (R-refresh holds, Deep3 Thm 1 hypothesis).</comment>
+</query>
+<query>
+<formula>E&lt;&gt; Cgt.gap == R</formula>
+<comment>Witness trace for the leak (gap = R closed frames).</comment>
+</query>
+<query>
+<formula>A[] Cgt.gap &lt;= R</formula>
+<comment>Deployed '&gt;' satisfies the shifted bound R' - 1 with R' = min(T, W+2) = 6.</comment>
+</query>
+<query>
+<formula>E&lt;&gt; Cge.gap == R - 1</formula>
+<comment>Tightness of the fixed variant: gap R-1 is reachable (Deep3 Thm 2).</comment>
+</query>
+<query>
+<formula>A[] not deadlock</formula>
+<comment>Sanity.</comment>
+</query>
+</queries>
+</nta>

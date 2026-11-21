@@ -1,0 +1,44 @@
+(************************************************************
+ * toy_refresh_param.imi -- topic 06, P0 sanity (a)
+ * Parametric version of model/toy_refresh.xml for IMITATOR 3.x.
+ * One frame = one time unit; decisions at integer instants (xf = 1).
+ *   xs : time since last OPEN   (= frames since last OPEN at a boundary)
+ *   xr : time since last refresh (refresh is absolute: every T frames)
+ * Fixed cap  ('>=') : CLOSED allowed only if xs <= W      (forced OPEN at xs = W+1)
+ * Deployed   ('>')  : CLOSED allowed only if xs <= W + 1  (forced OPEN at xs = W+2)
+ * Gate: may OPEN at any boundary (adversarial).
+ * Bad: some OPEN-to-OPEN gap exceeds R, i.e. xs >= R + 1 at a boundary.
+ * Synthesis EF(bad) returns the parameter set where R-refresh FAILS; the
+ * certificate region K is its complement inside the box below.
+ * Variant selected by the discrete constant GE (1 = '>=', 0 = '>'): two files
+ * are generated from this template by code/p0_sanity.py.
+ ************************************************************)
+
+var
+  xf, xs, xr : clock;
+  T, W, R : parameter;
+
+automaton ctrl
+  actions: ;
+
+  loc frame: invariant xf <= 1 & xs <= W + CAPOFF & xr <= T
+    (* bad: a gap larger than R has been observed *)
+    when xf = 1 & xs >= R + 1 goto bad;
+    (* refresh due: OPEN, reset refresh clock *)
+    when xf = 1 & xr = T do {xf := 0, xs := 0, xr := 0} goto frame;
+    (* gate opens (any frame before the refresh instant) *)
+    when xf = 1 & xr < T do {xf := 0, xs := 0} goto frame;
+    (* CLOSED frame: only if neither refresh nor cap forces OPEN *)
+    when xf = 1 & xr < T & xs <= W + CAPOFF - 1 do {xf := 0} goto frame;
+
+  loc bad: invariant True
+
+end
+
+init := {
+  discrete = loc[ctrl] := frame;
+  continuous = xf = 0 & xs = 0 & xr = 0
+    & T >= 1 & T <= TMAX
+    & W >= 0 & W <= WMAX
+    & R >= 1 & R <= RMAX;
+}

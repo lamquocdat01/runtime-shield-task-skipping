@@ -1,0 +1,89 @@
+== build 2026-10-17T20:52:00+07:00
+ghc 9.6.7; cabal 3.16.1.0; Ubuntu clang version 14.0.6; Z3 version 4.8.12 - 64 bit
+Configuring executable 'gate-shield' for gateshield-0.2...
+Preprocessing executable 'gate-shield' for gateshield-0.2...
+Building executable 'gate-shield' for gateshield-0.2...
+[1 of 1] Compiling Main             ( GateShield.hs, dist-newstyle/build/x86_64-linux/ghc-9.6.7/gateshield-0.2/x/gate-shield/build/gate-shield/gate-shield-tmp/Main.o ) [Source file changed]
+[2 of 2] Linking dist-newstyle/build/x86_64-linux/ghc-9.6.7/gateshield-0.2/x/gate-shield/build/gate-shield/gate-shield [Objects changed]
+BUILD_MS=15226
+== compile (C generation)
+-rw-r--r-- 1 root root 6147 Oct 17 20:52 gate_ctl.c
+-rw-r--r-- 1 root root  194 Oct 17 20:52 gate_ctl.h
+-rw-r--r-- 1 root root 1793 Oct 17 20:52 gate_shield.c
+-rw-r--r-- 1 root root  165 Oct 17 20:52 gate_shield.h
+8cae779b2504c9b0f3e908ba88c6238928a3b72c0ee053dbfaf0ff3725675550  gate_shield.c
+0a230bb4ddc62ed8c0a4ff188de048c61d0a2a23483a69bf371bc01fd310b8db  gate_shield.h
+a93e45bea265535ee4a60bc0548a58244bbcd37b0da17a5cadb91f208697eadc  gate_ctl.c
+93e8b92a406d61207601472bbd7ba733ef160f3be053b38f77111343a1d03106  gate_ctl.h
+== copilot-theorem (What4 / Z3) properties
+[("shield_IR",Valid),("shield_only_add",Valid),("shield_lazy",Valid)]
+[("prop44_inv",Valid),("prop44",Valid),("prop44_output_only",Invalid)]
+PROVE_MS=266
+== copilot-verifier
+[copilot-verifier] Generated "results/gate_shield/gate_shield.c"
+[copilot-verifier] Compiled gate_shield into results/gate_shield/crux~gate_shield.bc
+[copilot-verifier] Translated bitcode into Crucible
+[copilot-verifier] Generating proof state data
+[copilot-verifier] Computing initial state verification conditions
+[copilot-verifier] Proving initial state verification conditions
+[copilot-verifier] Proved 3 of 3 total goals
+[copilot-verifier] Computing step bisimulation verification conditions
+[copilot-verifier] Proving step bisimulation verification conditions
+[copilot-verifier] Proved 10 of 10 total goals
+[copilot-verifier] 
+[copilot-verifier] copilot-verifier has produced a mathematical proof that the behavior of
+[copilot-verifier] the generated C program (results/gate_shield/gate_shield.c) precisely matches the behavior of
+[copilot-verifier] the Copilot specification. This proof shows that the behaviors match for
+[copilot-verifier] all possible moments in time, and in doing so, copilot-verifier examined
+[copilot-verifier] how the programs behave at the start of execution (the "initial state")
+[copilot-verifier] and at an arbitrary point of time in execution (the "step bisimulation").
+[copilot-verifier] copilot-verifier decomposed the overall proof into smaller goals, the
+[copilot-verifier] number of which depends on the size and complexity of the program. In this
+[copilot-verifier] example, there are 3 initial state goal(s) and 10 step bisimulation goal(s),
+[copilot-verifier] and copilot-verifier was able to prove all of them.
+[copilot-verifier] 
+[copilot-verifier] copilot-verifier is displaying an abridged summary of the verification results.
+[copilot-verifier] copilot-verifier also includes a "noisy" mode that prints detailed
+[copilot-verifier] descriptions of each individual proof goal, including what type of goal it is,
+[copilot-verifier] why it needs to be proven, and where in the Copilot specification and/or C code
+[copilot-verifier] the proof goal originated from. To enable noisy mode, invoke the verifier with
+[copilot-verifier] the following options:
+[copilot-verifier] 
+[copilot-verifier] ```
+[copilot-verifier] verifyWithOptions (defaultVerifierOptions { verbosity = Noisy }) ...
+[copilot-verifier] ```
+[copilot-verifier] Generated "results/gate_ctl/gate_ctl.c"
+[copilot-verifier] Compiled gate_ctl into results/gate_ctl/crux~gate_ctl.bc
+[copilot-verifier] Translated bitcode into Crucible
+[copilot-verifier] Generating proof state data
+[copilot-verifier] Computing initial state verification conditions
+[copilot-verifier] Proving initial state verification conditions
+[copilot-verifier] Proved 15 of 15 total goals
+[copilot-verifier] Computing step bisimulation verification conditions
+[copilot-verifier] Proving step bisimulation verification conditions
+[copilot-verifier] Proved 36 of 36 total goals
+[copilot-verifier] 
+[copilot-verifier] copilot-verifier has produced a mathematical proof that the behavior of
+[copilot-verifier] the generated C program (results/gate_ctl/gate_ctl.c) precisely matches the behavior of
+[copilot-verifier] the Copilot specification. This proof shows that the behaviors match for
+[copilot-verifier] all possible moments in time, and in doing so, copilot-verifier examined
+[copilot-verifier] how the programs behave at the start of execution (the "initial state")
+[copilot-verifier] and at an arbitrary point of time in execution (the "step bisimulation").
+[copilot-verifier] copilot-verifier decomposed the overall proof into smaller goals, the
+[copilot-verifier] number of which depends on the size and complexity of the program. In this
+[copilot-verifier] example, there are 15 initial state goal(s) and 36 step bisimulation goal(s),
+[copilot-verifier] and copilot-verifier was able to prove all of them.
+[copilot-verifier] 
+[copilot-verifier] copilot-verifier is displaying an abridged summary of the verification results.
+[copilot-verifier] copilot-verifier also includes a "noisy" mode that prints detailed
+[copilot-verifier] descriptions of each individual proof goal, including what type of goal it is,
+[copilot-verifier] why it needs to be proven, and where in the Copilot specification and/or C code
+[copilot-verifier] the proof goal originated from. To enable noisy mode, invoke the verifier with
+[copilot-verifier] the following options:
+[copilot-verifier] 
+[copilot-verifier] ```
+[copilot-verifier] verifyWithOptions (defaultVerifierOptions { verbosity = Noisy }) ...
+[copilot-verifier] ```
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.47
+	Maximum resident set size (kbytes): 86272
+rc=0 VERIFY_MS=2479

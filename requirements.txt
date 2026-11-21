@@ -1,0 +1,9 @@
+numpy==1.26.4
+pandas==2.3.3
+pyarrow==22.0.0
+numba==0.65.1
+llvmlite==0.47.0
+matplotlib==3.10.8
+# artifact check (code/c7a_check.py)
+requests==2.31.0
+pymupdf==1.28.2
