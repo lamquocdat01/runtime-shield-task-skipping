@@ -7,7 +7,7 @@ authors:
     given-names: "Dat"
     affiliation: "FPT School of Business and Technology (FSB), FPT University"
     orcid: "https://orcid.org/0009-0004-5432-9343"
-version: "1.3.0-submission"
+version: "1.3.1-submission"
 license: MIT
 repository-code: "https://github.com/lamquocdat01/runtime-shield-task-skipping"
 keywords:

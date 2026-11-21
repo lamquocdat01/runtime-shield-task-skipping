@@ -1,6 +1,9 @@
 """p0_crosscheck_deep3.py -- compare the independent re-implementation (policy_ref.py)
-against the per-event outcomes published by the Deep3 harness (corrected re-run,
-27-09-2026; events_gated.csv = deployed `>`, events_gated_fixed.csv = `>=`).
+against the per-event outcomes of a re-run of the released Deep3 harness after
+correcting a sequence-ordering error in its LASIESTA corpus listing (frames in
+capture order; re-run 27-09-2026; events_gated.csv = deployed `>`,
+events_gated_fixed.csv = `>=`). These corrected tables differ from the tables
+printed in the Deep3 article; a correction to that article is in preparation.
 Read-only on the Deep3 side; nothing is imported from it.
 
 Usage: python code/p0_crosscheck_deep3.py --seed 42 --deep3-dir <dir with events_gated*.csv>
@@ -17,7 +20,7 @@ import pandas as pd
 
 TOPIC_DIR = Path(__file__).resolve().parent.parent
 OUT_ROOT = Path(os.environ.get("THS_DATASETS", "datasets")) / "_derived" / "06"
-# processed per-event tables of the published Deep3 run (not redistributed); set DEEP3_PROCESSED
+# processed per-event tables of the corrected Deep3 re-run (not redistributed); set DEEP3_PROCESSED
 DEFAULT_DEEP3 = os.environ.get("DEEP3_PROCESSED", "deep3_processed")
 
 
